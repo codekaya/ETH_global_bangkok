@@ -53,6 +53,7 @@ export class PredictionMarket extends RuntimeModule {
       description: description
     });
     await this.totalBets.set(lastBetId.add(1), bet);
+    return bet;
   }
 
   @runtimeMethod()
