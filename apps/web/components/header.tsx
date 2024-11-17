@@ -6,6 +6,7 @@ import truncateMiddle from "truncate-middle";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Chain } from "./chain";
 import { Separator } from "./ui/separator";
+import Link from "next/link";
 
 export interface HeaderProps {
   loading: boolean;
@@ -34,10 +35,17 @@ export default function Header({
             <Chain height={blockHeight} />
           </div>
         </div>
-        <div className="flex basis-6/12 flex-row items-center justify-end">
+        <div className="flex basis-6/12 flex-row items-center justify-end gap-4">
+          {/* Prediction Market Button */}
+          <Link href="/prediction-market">
+            <Button variant="outline">
+              Prediction Market
+            </Button>
+          </Link>
+          
           {/* balance */}
           {wallet && (
-            <div className="mr-4 flex shrink flex-col items-end justify-center">
+            <div className="flex shrink flex-col items-end justify-center">
               <div>
                 <p className="text-xs">Your balance</p>
               </div>
@@ -50,6 +58,7 @@ export default function Header({
               </div>
             </div>
           )}
+          
           {/* connect wallet */}
           <Button loading={loading} className="w-44" onClick={onConnectWallet}>
             <div>
