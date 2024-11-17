@@ -44,9 +44,9 @@ describe("balances", () => {
     const block = await appChain.produceBlock();
 
     const key = new BalancesKey({ tokenId, address: alice });
-    //const balance = await appChain.query.runtime.PredictionMarket.
+    const balance = await appChain.query.runtime.Balances.balances.get(key);
 
-    //expect(block?.transactions[0].status.toBoolean()).toBe(true);
-    //expect(balance?.toString()).toBe("1000");
+    expect(block?.transactions[0].status.toBoolean()).toBe(true);
+    expect(balance?.toBigInt()).toBe(1000n);
   }, 1_000_000);
 });
